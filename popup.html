@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persian Dictation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 400px;
+      font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background:  linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 20px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    . buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    . btn {
+      padding: 12px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .btn-speak {
+      background: #4CAF50;
+      color: white;
+      flex: 1;
+      min-width: 120px;
+    }
+    . btn-speak:hover {
+      background: #45a049;
+    }
+    .btn-speak. recording {
+      background: #f44336;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .btn-clear {
+      background: #ff9800;
+      color: white;
+    }
+    .btn-copy {
+      background: #2196F3;
+      color: white;
+    }
+    .language-selector {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    . language-selector label {
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+    .language-selector input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .status {
+      text-align: center;
+      color: #aaa;
+      font-size:  12px;
+      margin-bottom: 5px;
+    }
+    . word-count {
+      text-align: center;
+      color: #888;
+      font-size: 11px;
+      margin-bottom: 15px;
+    }
+    
+    /* TEXT AREA - Where dictation appears */
+    .text-area {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 15px;
+      min-height: 200px;
+      max-height:  300px;
+      overflow-y: auto;
+      font-size: 16px;
+      line-height:  1.6;
+      direction: rtl;
+      text-align: right;
+    }
+    #content {
+      color: #333;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    #content: empty: before {
+      content: "متن شما اینجا نمایش داده می‌شود...";
+      color: #999;
+    }
+    . interim {
+      color: #888;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎤 Persian Dictation</h1>
+    
+    <div class="buttons">
+      <button class="btn btn-speak" id="speakBtn">▶ Start</button>
+      <button class="btn btn-clear" id="clearBtn">🗑 Clear</button>
+      <button class="btn btn-copy" id="copyBtn">📋 Copy</button>
+    </div>
+    
+    <div class="language-selector">
+      <label>
+        <input type="radio" name="lang" value="en-US" id="lang-en">
+        English
+      </label>
+      <label>
+        <input type="radio" name="lang" value="fa-IR" id="lang-fa" checked>
+        فارسی
+      </label>
+      <label>
+        <input type="radio" name="lang" value="tr-TR" id="lang-tr">
+        Türkçe
+      </label>
+    </div>
+    
+    <div class="status" id="status">Ready</div>
+    <div class="word-count" id="wordCount"></div>
+    
+    <!-- TEXT AREA FOR DICTATION -->
+    <div class="text-area">
+      <div id="content"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
