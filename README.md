@@ -2,8 +2,6 @@
 
 A Chrome extension for live speech-to-text dictation supporting Persian (Farsi), English, and Turkish. 
 
-![Persian Dictation Screenshot](screenshot.png)
-
 ## ✨ Features
 
 - 🎙️ **Live Speech Recognition** - See your words appear as you speak
